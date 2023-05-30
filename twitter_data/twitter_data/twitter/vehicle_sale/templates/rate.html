@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Enter your valuable feedback</h1>
+     <h3>Enter any vehicle name listed below and enter your reviews</h3>
+      {% for prod in product %}
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-warning">{{prod}}</li>
+             </ul>
+      {% endfor %}
+        <br><br>
+      {% if submitted%}
+
+      <ul class="list-group">
+            <li class="list-group-item list-group-item-success">Review added successfully</li>
+      </ul>
+        <br><br>
+        <a href="http://127.0.0.1:8000/rate" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Back</a>
+
+      {% else %}
+
+        <form action="" method =POST>
+          {% csrf_token%}
+          {{form.as_p}}
+          <input type="submit" value="submit" class="btn btn-secondary">
+        </form>
+      {% endif %}
+
+{% endblock %}

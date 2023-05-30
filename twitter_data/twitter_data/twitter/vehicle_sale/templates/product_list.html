@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+  <h1><center><strong>Products</strong></center></h1>
+     {% for product in product_list %}
+
+
+
+     <div class="card">
+  <div class="card-header">
+    {{product}}
+  </div>
+  <div class="card-body">
+    <p class="card-text"><a href ="{% url 'show-product' product.id %}">{{product}}</a><br></p>
+    <p class="card-text">Website:{{product.web}}</p>
+      <p class="card-text">{{product.description}}</p>
+      <img src="{{product.product_image}}" width="500"/>
+
+  </div>
+          <div class = "card-footer">
+        <a href =" {% url 'rate'  %}"class = "btn btn-secondary">Rate</a>
+    </div>
+</div>
+
+     {% endfor %}
+
+
+{% endblock %}
+</html>

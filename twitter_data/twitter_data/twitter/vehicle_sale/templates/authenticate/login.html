@@ -1,0 +1,33 @@
+{% extends 'baseone.html' %}
+{% block content %}
+  <br>
+  <strong><h1>Login</h1></strong>
+  <br><br>
+
+
+
+    <form action="" method =POST>
+      {% csrf_token%}
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">USERNAME</label>
+    <input type="text" class="form-control" name="username" aria-describedby="emailHelp">
+
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" name="password">
+  </div>
+
+
+      <input type="submit" value="submit" class="btn btn-secondary">
+    </form><br>
+<strong>If not a registered user click here to register!!</strong><br><br>
+
+  <a href="{% url 'register-user'%}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Register</a><br><br>
+  <a href="http://127.0.0.1:8000/admin" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Admin</a>
+
+
+
+
+{% endblock %}

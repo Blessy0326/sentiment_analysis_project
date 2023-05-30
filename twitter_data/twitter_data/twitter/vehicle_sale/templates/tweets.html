@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<center>
+    <h1>Welcome to tweets session</h1>
+    <h3>Enter the product you want to analyse</h3>
+     {% if submitted %}
+          {{pol}}
+            <br><br>
+        {% if positive %}
+            <div class="card" style="width: 18rem;">
+              <img src="{% static 'positive.jpg' %}" alt="My image">
+              <div class="card-body">
+                <p class="card-text">Positve</p>
+              </div></div>
+        <a href="http://127.0.0.1:8000/tweets" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Back</a>
+
+        {% endif %}
+         {% if negetive %}
+                 <div class="card" style="width: 18rem;">
+              <img src="{% static 'sad.jpg' %}" alt="My image">
+              <div class="card-body">
+                <p class="card-text">Negetive</p>
+              </div></div>
+        <a href="http://127.0.0.1:8000/tweets" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Back</a>
+
+        {% endif %}
+     {% if neutral %}
+            <div class="card" style="width: 18rem;">
+              <img src="{% static 'neutral.jpg' %}" alt="My image">
+              <div class="card-body">
+                <p class="card-text">Neutral</p>
+              </div></div>
+        <a href="http://127.0.0.1:8000/tweets" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Back</a>
+
+        {% endif %}
+
+    <br><br>
+
+    {% else %}
+      <form action="" method = "POST">
+       {% csrf_token%}
+          <input type ="text" name="product" placeholder="enter product name">
+           <input type = "submit" value = "click">
+           <body>
+
+    <div>
+        <img src="{% static 'sentiment.jpeg' %}" alt="My image" style="width:100%" height="50%">
+    </div>
+          {% endif %}
+      </form>
+
+</center>
+
+{% endblock %}
+</html>

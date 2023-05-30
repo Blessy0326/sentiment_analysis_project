@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+{%load static%}
+<h1> <center><strong>Select the product to apply Sentiment Analysis</strong></center></h1>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    {% if submitted %}
+    <h1>Sentiment Analysis for {{val1}}</h1>
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Review</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+
+      <td>
+          {% for r in review %}
+
+            {{r.review}}<br>
+        {% endfor %}
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+   <div class="modal-body">
+  <h5>Average polarity</h5>
+  <p>{{avg}}</p>
+  <hr>
+  <h5>Overall User Experiance</h5>
+  <p> {{status}}</p>
+</div>
+    <br><br>
+    <a href="http://127.0.0.1:8000/classify" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Back</a>
+
+
+    {% else %}
+    <form action="" method = "POST">
+        {% csrf_token%}
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name ="Product_name">
+            <option selected>Select a Product</option>
+            {% for prod in product %}
+                <option >{{prod}}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="submit" class="btn btn-secondary">
+   </form>
+     <body>
+
+    <div>
+        <img src="{% static 'sentiment.jpeg' %}" alt="My image" style="width:100%" height="50%">
+    </div>
+
+</body>
+    {% endif %}
+
+
+{% endblock %}
+</html>
